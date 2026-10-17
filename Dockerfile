@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY --from=build --chown=node:node /prod/api /app
 COPY --from=build --chown=node:node /prod/api /app
-RUN mkdir -p /app/.git && echo "ref: refs/heads/main" > /app/.git/HEAD
+RUN mkdir -p /app/.git/logs && echo "ref: refs/heads/main" > /app/.git/HEAD && echo "0000000000000000000000000000000000000000 0000000000000000000000000000000000000000 Test <test@test.com> 0 +0000 commit: init" > /app/.git/logs/HEAD
 USER node
 
 USER node
