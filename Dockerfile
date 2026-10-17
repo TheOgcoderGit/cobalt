@@ -18,6 +18,9 @@ FROM base AS api
 WORKDIR /app
 
 COPY --from=build --chown=node:node /prod/api /app
+COPY --from=build --chown=node:node /prod/api /app
+RUN mkdir -p /app/.git && echo "ref: refs/heads/main" > /app/.git/HEAD
+USER node
 
 USER node
 
